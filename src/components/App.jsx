@@ -26,7 +26,6 @@ export class App extends Component {
     this.setState({filter: searchQuerry})
 }
   
-
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLocaleLowerCase()));
@@ -40,5 +39,4 @@ export class App extends Component {
       </div>
     )
   }
-
 };
