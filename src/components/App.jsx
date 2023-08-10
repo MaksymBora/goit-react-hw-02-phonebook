@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { ContactsForm } from './ContactsForm/ContactsForm';
+import { Filter } from './Filter/Filter';
+
 
 export class App extends Component {
   state = {
@@ -9,6 +11,7 @@ export class App extends Component {
       {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: ''
     };
   
   addContact = (newContact) => {
@@ -17,17 +20,23 @@ export class App extends Component {
     }));
   };
 
+  getContact = evt => {
+    const searchQuerry = evt.currentTarget.value;
+    this.setState({filter: searchQuerry})
+}
+  
+
   render() {
+    const { contacts, filter } = this.state;
+    const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLocaleLowerCase()));
     return (
       <div>
         <ContactsForm onAdd={ this.addContact } />
-          <p>Find contacts by name</p>
-          <input
-            type="text"
-            placeholder="Filter contacts"/>
-          <h2>Contacts</h2>
+        <h2>Contacts</h2>
+        <p>Find contacts by name</p>
+        <Filter filter={ filter } getContact={this.getContact}  />
           <ul>
-            {this.state.contacts.map(contact => {
+            {filteredContacts.map(contact => {
               return (
                 <li key={contact.id}>{contact.name}: { contact.number}</li>
                  )
