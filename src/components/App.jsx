@@ -1,66 +1,44 @@
-// import { nanoid } from 'nanoid'
-import * as Yup from 'yup';
 import React, { Component } from 'react';
-import { Formik, Field, Form } from 'formik';
-
-
-
-const ContactsSchema = Yup.object().shape({
-  contacts: Yup.array()
-    .of(
-      Yup.object().shape({
-        type: Yup.string()
-          .required('Type is required')
-      })
-    )
-    .required('At least one contact is required'),
-  name: Yup.string()
-    .min(2, 'Name is too short')
-    .max(50, 'Name is too long')
-    .required('Name is required'),
-});
-
+import { nanoid } from 'nanoid';
+import { ContactsForm } from './ContactsForm/ContactsForm';
 
 export class App extends Component {
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    };
+  
+  addContact = ({ name }) => {
+    const newContact = { id: nanoid(), name }
+    console.log(name)
+    console.log(newContact)
 
-  
-  
+    this.setState(prevState => ({
+      contacts: [ ...prevState.contacts, newContact]
+    }));
+  };
 
   render() {
     return (
       <div>
-        <Formik
-        initialValues={{
-            contacts: [],
-            name: ''
-          }}
-          validationSchema={ContactsSchema}
-          onSubmit={(values) => {
-          console.log(values)
-        }}
-        >
-          <Form>
-            <label>
-              Name
-              <Field name="name" placeholder="Jane" />
-            </label>
-            <button type="submit">Add contact</button>
-          </Form>
-        </Formik>
-
+        <ContactsForm onAdd={ this.addContact } />
           <p>Find contacts by name</p>
           <input
             type="text"
             placeholder="Filter contacts"/>
           <h2>Contacts</h2>
-          {/* <ul>
+          <ul>
             {this.state.contacts.map(contact => {
               return (
-                <li key={contact.id}>{contact.name}: { contact.number}</li>
+                <li key={contact.id}>{contact.name}: { contact.name}</li>
                  )
               })}
             
-          </ul> */}
+          </ul>
       </div>
     )
   }
