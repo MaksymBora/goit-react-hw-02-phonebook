@@ -8,22 +8,23 @@ const ContactsSchema = Yup.object().shape({
   number: Yup.string().min(6).max(10).required(''),
 });
 
+const initialValues = { name: '', number: '' };
+
 export const ContactsForm = ({ onAdd }) => {
+  const handleSubmit = (values, { resetForm }) => {
+    onAdd({ ...values, id: nanoid() });
+    console.log(values, 'form test');
+    resetForm();
+  };
+
   return (
     <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
+      initialValues={initialValues}
       validationSchema={ContactsSchema}
-      onSubmit={(values, { resetForm }) => {
-        values.id = nanoid();
-        onAdd(values);
-        resetForm();
-      }}
+      onSubmit={handleSubmit}
     >
       {props => (
-        <Form>
+        <Form autoComplete="off">
           <Field
             onChange={props.handleChange}
             value={props.values.name}

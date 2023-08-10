@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import { ContactsForm } from './ContactsForm/ContactsForm';
 
 export class App extends Component {
@@ -12,11 +11,8 @@ export class App extends Component {
     ],
     };
   
-  addContact = ({ name, number }) => {
-    const newContact = { id: nanoid(), name, number }
-   
-    console.log(newContact)
-
+  addContact = (newContact) => {
+    console.log(newContact, 'Test App')
     this.setState(prevState => ({
       contacts: [ ...prevState.contacts, newContact]
     }));
