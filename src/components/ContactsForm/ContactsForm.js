@@ -13,7 +13,6 @@ const initialValues = { name: '', number: '' };
 export const ContactsForm = ({ onAdd }) => {
   const handleSubmit = (values, { resetForm }) => {
     onAdd({ ...values, id: nanoid() });
-    console.log(values, 'form test');
     resetForm();
   };
 
@@ -23,25 +22,21 @@ export const ContactsForm = ({ onAdd }) => {
       validationSchema={ContactsSchema}
       onSubmit={handleSubmit}
     >
-      {props => (
-        <Form autoComplete="off">
-          <Field
-            onChange={props.handleChange}
-            value={props.values.name}
-            name="name"
-            placeholder="Jane"
-          />
+      <Form autoComplete="off">
+        <label>
+          Name
+          <Field name="name" placeholder="Jane" />
           <ErrorMessage component="div" name="name" />
-          <Field
-            onChange={props.handleChange}
-            value={props.values.number}
-            name="number"
-            placeholder="Enter Phone"
-          />
+        </label>
+
+        <label>
+          Number
+          <Field name="number" placeholder="Enter Phone" />
           <ErrorMessage component="div" name="number" />
-          <button type="submit">Add contact</button>
-        </Form>
-      )}
+        </label>
+
+        <button type="submit">Add contact</button>
+      </Form>
     </Formik>
   );
 };

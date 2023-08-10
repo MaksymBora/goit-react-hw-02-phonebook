@@ -12,7 +12,6 @@ export class App extends Component {
     };
   
   addContact = (newContact) => {
-    console.log(newContact, 'Test App')
     this.setState(prevState => ({
       contacts: [ ...prevState.contacts, newContact]
     }));
