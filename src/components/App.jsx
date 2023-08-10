@@ -12,9 +12,9 @@ export class App extends Component {
     ],
     };
   
-  addContact = ({ name }) => {
-    const newContact = { id: nanoid(), name }
-    console.log(name)
+  addContact = ({ name, number }) => {
+    const newContact = { id: nanoid(), name, number }
+   
     console.log(newContact)
 
     this.setState(prevState => ({
@@ -34,7 +34,7 @@ export class App extends Component {
           <ul>
             {this.state.contacts.map(contact => {
               return (
-                <li key={contact.id}>{contact.name}: { contact.name}</li>
+                <li key={contact.id}>{contact.name}: { contact.number}</li>
                  )
               })}
             

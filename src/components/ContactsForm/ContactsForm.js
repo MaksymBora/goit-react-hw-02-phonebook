@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const ContactsSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
+  number: Yup.string().min(6).max(10).required(''),
 });
 
 export const ContactsForm = ({ onAdd }) => {
@@ -12,14 +13,12 @@ export const ContactsForm = ({ onAdd }) => {
     <Formik
       initialValues={{
         name: '',
+        number: '',
       }}
       validationSchema={ContactsSchema}
       onSubmit={(values, { resetForm }) => {
         values.id = nanoid();
         onAdd(values);
-
-        console.log(values);
-
         resetForm();
       }}
     >
@@ -32,6 +31,13 @@ export const ContactsForm = ({ onAdd }) => {
             placeholder="Jane"
           />
           <ErrorMessage component="div" name="name" />
+          <Field
+            onChange={props.handleChange}
+            value={props.values.number}
+            name="number"
+            placeholder="Enter Phone"
+          />
+          <ErrorMessage component="div" name="number" />
           <button type="submit">Add contact</button>
         </Form>
       )}
