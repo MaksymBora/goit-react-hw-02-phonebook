@@ -1,19 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 const ContactsSchema = Yup.object().shape({
-  contacts: Yup.array()
-    .of(
-      Yup.object().shape({
-        type: Yup.string().required('Type is required'),
-      })
-    )
-    .required('At least one contact is required'),
-  name: Yup.string()
-    .min(2, 'Name is too short')
-    .max(50, 'Name is too long')
-    .required('Name is required'),
+  name: Yup.string().required('Name is required'),
 });
 
 export const ContactsForm = ({ onAdd }) => {
@@ -36,7 +27,7 @@ export const ContactsForm = ({ onAdd }) => {
         <Form>
           <Field
             onChange={props.handleChange}
-            vlaue={props.values.name}
+            value={props.values.name}
             name="name"
             placeholder="Jane"
           />
@@ -46,4 +37,8 @@ export const ContactsForm = ({ onAdd }) => {
       )}
     </Formik>
   );
+};
+
+ContactsForm.propTypes = {
+  onAdd: PropTypes.func.isRequired,
 };
