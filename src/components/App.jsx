@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ContactsForm } from './ContactsForm/ContactsForm';
 import { Filter } from './Filter/Filter';
+import { ContactList } from './ContactsList/ContactsList';
 
 
 export class App extends Component {
@@ -35,14 +36,7 @@ export class App extends Component {
         <h2>Contacts</h2>
         <p>Find contacts by name</p>
         <Filter filter={ filter } getContact={this.getContact}  />
-          <ul>
-            {filteredContacts.map(contact => {
-              return (
-                <li key={contact.id}>{contact.name}: { contact.number}</li>
-                 )
-              })}
-            
-          </ul>
+        <ContactList filteredContacts={ filteredContacts } />
       </div>
     )
   }
