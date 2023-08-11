@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { InputFilter } from './Filter.styled';
 
 export const Filter = ({ filter, getContact }) => {
   return (
     <div>
-      <input
+      <InputFilter
         value={filter}
         onChange={getContact}
         placeholder="Search..."

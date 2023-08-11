@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+import { ContactItem } from './ContactsList.styled';
 
 export const ContactList = ({ filteredContacts }) => {
   return (
     <ul>
       {filteredContacts.map(contact => {
         return (
-          <li key={contact.id}>
+          <ContactItem key={contact.id}>
             {contact.name}: {contact.number}
-          </li>
+          </ContactItem>
         );
       })}
     </ul>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { ContactsForm } from './ContactsForm/ContactsForm';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactsList/ContactsList';
+import { ContactsForm } from '../ContactsForm/ContactsForm';
+import { Filter } from '../Filter/Filter';
+import { ContactList } from '../ContactsList/ContactsList';
+import { AppWrapper,Title, SearchWrapper, StyledTitles } from './app.styled';
 
 
 export class App extends Component {
@@ -30,13 +31,17 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLocaleLowerCase()));
     return (
-      <div>
+      <AppWrapper>
         <ContactsForm onAdd={ this.addContact } />
-        <h2>Contacts</h2>
-        <p>Find contacts by name</p>
-        <Filter filter={ filter } getContact={this.getContact}  />
-        <ContactList filteredContacts={ filteredContacts } />
-      </div>
+        <SearchWrapper>
+          <StyledTitles>
+            <Title>Contacts</Title>
+            <p>Find contacts by name</p>
+          </StyledTitles>
+          <Filter filter={ filter } getContact={this.getContact}  />
+          <ContactList filteredContacts={filteredContacts} />
+          </SearchWrapper>
+      </AppWrapper>
     )
   }
 };
