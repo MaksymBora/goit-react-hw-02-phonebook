@@ -12,10 +12,16 @@ export const StyledForm = styled(Form)`
 export const StyledField = styled(Field)`
   padding: 4px 4px 4px 8px;
   width: 300px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledError = styled(ErrorMessage)`
   color: red;
+  font-size: 12px;
+  font-style: italic;
 `;
 
 export const StyledLable = styled.label`
@@ -40,10 +46,13 @@ export const Button = styled.button`
   border: none;
   background: linear-gradient(to right, #d3cce3, #e9e4f0);
   text-align: center;
-  transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out;
+  color: #696969;
+  transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out,
+    color 250ms ease-in-out;
 
   &:hover {
     box-shadow: 0px 0px 10px 0px rgba(232, 77, 151, 0.75);
     transform: scale(1.1);
+    color: #000;
   }
 `;

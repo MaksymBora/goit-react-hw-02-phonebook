@@ -35,7 +35,13 @@ export class App extends Component {
   getContact = evt => {
     const searchQuerry = evt.currentTarget.value;
     this.setState({filter: searchQuerry})
-}
+  }
+  
+  removeContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
   
   render() {
     const { contacts, filter } = this.state;
@@ -49,7 +55,7 @@ export class App extends Component {
             <p>Find contacts by name</p>
           </StyledTitles>
           <Filter filter={ filter } getContact={this.getContact}  />
-          <ContactList filteredContacts={filteredContacts} />
+          <ContactList filteredContacts={filteredContacts} removeContact={ this.removeContact} />
           </SearchWrapper>
       </AppWrapper>
     )

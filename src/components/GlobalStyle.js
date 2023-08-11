@@ -12,7 +12,7 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	margin: 0;
-	color: #000;
+	color: #696969	;
   }
 
 code {
