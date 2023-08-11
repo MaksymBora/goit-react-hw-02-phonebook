@@ -3,16 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 	background: linear-gradient(to right, #a1ffce, #faffd1);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
 	margin: 0;
-	color: #696969	;
+	color: #696969;
   }
 
 code {
@@ -41,9 +37,5 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
-}
-
-#root {
-
 }
 `;

@@ -15,6 +15,7 @@ export const StyledField = styled(Field)`
   border-radius: 4px;
   outline: none;
   border: none;
+  background-color: #ffffff;
   box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
 `;
 
