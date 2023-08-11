@@ -24,5 +24,5 @@ export const SearchWrapper = styled.div`
 export const StyledTitles = styled.div`
   display: flex;
   align-items: center;
-  gap: 122px;
+  gap: 200px;
 `;
