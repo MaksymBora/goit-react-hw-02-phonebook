@@ -11,7 +11,7 @@ export const AppWrapper = styled.div`
   padding: 10px;
   margin-top: 25px;
   border-radius: 8px;
-  background-color: RGBA(227, 253, 211, 0.7);
+  background-color: ${({ theme }) => theme.colors.appBg};
   box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
 `;
 

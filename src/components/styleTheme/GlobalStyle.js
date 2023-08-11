@@ -6,9 +6,9 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-	background: linear-gradient(to right, #a1ffce, #faffd1);
+	background: ${({ theme }) => theme.colors.bodyBg};
 	margin: 0;
-	color: #696969;
+	color: ${({ theme }) => theme.colors.textPrimary};
   }
 
 code {
