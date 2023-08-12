@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactsList/ContactsList';
-import { AppWrapper,Title, SearchWrapper, StyledTitles } from './app.styled';
+import { AppWrapper,Title, SearchWrapper, StyledTitles, CloseBtn, OpenPhonebook } from './app.styled';
 
 
 export class App extends Component {
@@ -13,7 +13,8 @@ export class App extends Component {
       {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ''
+    filter: '',
+    isOpen: false,
     };
   
   addContact = (newContact) => {
@@ -42,22 +43,37 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+
+  showPhonebook = () => {
+    this.setState({ isOpen: true });
+  };
+
+    hidePhonebook = () => {
+    this.setState({ isOpen: false });
+  };
   
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLocaleLowerCase()));
     return (
-      <AppWrapper>
-        <ContactsForm onAdd={ this.addContact } />
-        <SearchWrapper>
-          <StyledTitles>
-            <Title>Contacts</Title>
-            <p>Find contacts by name</p>
-          </StyledTitles>
-          <Filter filter={ filter } getContact={this.getContact}  />
-          <ContactList filteredContacts={filteredContacts} removeContact={ this.removeContact} />
-          </SearchWrapper>
-      </AppWrapper>
+      <>
+        <OpenPhonebook onClick={this.showPhonebook} className="phoneBook">Open Phonebook</OpenPhonebook>
+        {this.state.isOpen &&
+          <AppWrapper>
+            <CloseBtn onClick={this.hidePhonebook}/>
+            <ContactsForm onAdd={ this.addContact } />
+            <SearchWrapper>
+              <StyledTitles>
+                <Title>Contacts</Title>
+                <p>Find contacts by name</p>
+              </StyledTitles>
+              <Filter filter={ filter } getContact={this.getContact}  />
+              <ContactList filteredContacts={filteredContacts} removeContact={ this.removeContact} />
+            </SearchWrapper>
+        </AppWrapper>
+        }
+          
+        </>
     )
   }
 };

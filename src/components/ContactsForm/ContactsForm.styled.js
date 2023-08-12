@@ -48,6 +48,7 @@ export const Button = styled.button`
   background: transparent;
   text-align: center;
   color: ${({ theme }) => theme.colors.textPrimary};
+  cursor: pointer;
   transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out,
     color 250ms ease-in-out;
 

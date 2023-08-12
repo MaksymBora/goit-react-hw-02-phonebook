@@ -13,7 +13,7 @@ import {
 } from './ContactsForm.styled';
 
 const ContactsSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
+  name: Yup.string().required('* Name is required'),
   number: Yup.string().min(6).max(10).required(''),
 });
 
