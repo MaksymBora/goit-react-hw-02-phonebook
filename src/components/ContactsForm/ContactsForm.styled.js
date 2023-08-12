@@ -40,12 +40,12 @@ export const Wrapper = styled.div`
 export const Button = styled.button`
   display: block;
   padding: 8px;
-  width: 150px;
+  min-width: 50px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 4px;
+  border-radius: 50%;
   border: none;
-  background: ${({ theme }) => theme.colors.buttonBg};
+  background: transparent;
   text-align: center;
   color: ${({ theme }) => theme.colors.textPrimary};
   transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out,
@@ -54,6 +54,6 @@ export const Button = styled.button`
   &:hover {
     box-shadow: 0px 0px 10px 0px rgba(232, 77, 151, 0.75);
     transform: scale(1.1);
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;

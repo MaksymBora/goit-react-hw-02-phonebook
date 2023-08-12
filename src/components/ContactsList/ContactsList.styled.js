@@ -14,12 +14,12 @@ export const ContactItem = styled.li`
 `;
 
 export const RemoveButton = styled.button`
-  min-width: 80px;
+  min-width: 40px;
   border: none;
-  padding: 4px 6px 4px 6px;
+  padding: 4px;
   cursor: pointer;
-  background: ${({ theme }) => theme.colors.buttonBg};
-  border-radius: 15px;
+  background: transparent;
+  border-radius: 50%;
   font-size: 14px;
   text-align: center;
   color: ${({ theme }) => theme.colors.textPrimary};

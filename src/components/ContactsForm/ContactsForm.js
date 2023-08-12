@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
+import { FiUserPlus } from 'react-icons/fi';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import {
@@ -44,7 +45,9 @@ export const ContactsForm = ({ onAdd }) => {
             <StyledError component="div" name="number" />
           </StyledLable>
 
-          <Button type="submit">Add Contact</Button>
+          <Button type="submit">
+            <FiUserPlus size={26} />
+          </Button>
         </StyledForm>
       </Formik>
     </Wrapper>

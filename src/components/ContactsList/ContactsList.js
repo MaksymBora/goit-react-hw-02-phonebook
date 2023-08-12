@@ -1,3 +1,4 @@
+import { FiUserX } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { ContactItem, RemoveButton } from './ContactsList.styled';
 
@@ -11,7 +12,7 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
               {contact.name}: {contact.number}
             </p>
             <RemoveButton onClick={() => removeContact(contact.id)}>
-              Delete
+              <FiUserX size={21} />
             </RemoveButton>
           </ContactItem>
         );
