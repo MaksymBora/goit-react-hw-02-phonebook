@@ -57,7 +57,7 @@ export class App extends Component {
     const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLocaleLowerCase()));
     return (
       <>
-        <OpenPhonebook onClick={this.showPhonebook} className="phoneBook">Open Phonebook</OpenPhonebook>
+        {!this.state.isOpen && <OpenPhonebook onClick={this.showPhonebook} className="phoneBook">Open Phonebook</OpenPhonebook>}
         {this.state.isOpen &&
           <AppWrapper>
             <CloseBtn onClick={this.hidePhonebook}/>
